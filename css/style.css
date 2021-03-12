@@ -1,0 +1,282 @@
+@import "./variable.css";
+@import "./utility.css";
+
+/* //////////////////////////////////////////////// */
+/* Global Styling */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Quicksand", sans-serif;
+}
+
+a{
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+::placeholder{
+  font-family: "Quicksand", sans-serif; 
+}
+
+/* //////////////////////////////////////////////// */
+/* Typography */
+
+.heading-primary {
+  font-size: 10rem;
+  font-weight: 100;
+}
+
+.heading-secondary {
+  font-size: 6rem;
+  font-weight: 400;
+}
+
+.heading-tertiary {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .6rem;
+}
+
+.para-primary{
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.para-secondary{
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* //////////////////////////////////////////////// */
+/* Screens */
+
+.screen {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary-light);
+}
+
+.screen-left {
+  height: 100%;
+  width: 70%;
+  background: var(--color-primary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen-right {
+  height: 100%;
+  width: 30%;
+  background: var(--color-secondary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.screen-right--input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60%;
+  width: 100%;
+}
+
+input {
+  font-size: 2rem;
+  padding: 2rem;
+  border-radius: 5rem;
+  border: none;
+  background: none;
+  width: 70%;
+  margin-right: 1rem;
+}
+
+.screen-right--input i {
+  font-size: 2rem;
+  border: none;
+}
+
+.screen-right img {
+  width: 10rem;
+}
+
+.input-fields-big{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  background: var(--color-primary-light);
+}
+
+.input-fields-small {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  height: 5rem;
+}
+
+.signup-page{
+  display: none;
+}
+
+.screen-left-left {
+  height: 100%;
+  width: 60%;
+  background: var(--color-primary-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-left-right{
+  height: 100%;
+  width: 40%;
+  background: var(--color-primary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#app{
+  display: none;
+}
+
+/* //////////////////////////////////////////////// */
+/* BUTTONS */
+
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-primary-light);
+  background: var(--color-primary-dark);
+  border-radius: 20rem;
+  font-size: 2rem;
+  padding: 2rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* //////////////////////////////////////////////// */
+/* NAVBAR */
+
+.navbar--navlinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.navbar--navlinks li {
+  list-style: none;
+}
+
+.navbar--navlinks li a img {
+  width: 5rem;
+}
+
+.navbar--navlinks--input {
+  display: flex;
+  justify-content: center;
+}
+
+/* //////////////////////////////////////////////// */
+/* CARDS */
+
+.cards{
+  height: 26%;
+  width: 90%;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-primary-light);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.utility-cards{
+  color: var(--color-primary-dark);
+  height: 18%;
+  width: 90%;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.transaction-cards{
+  background: var(--color-secondary-light);
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  overflow-y: scroll;
+}
+
+.balance-cards{
+  background: var(--color-primary-light);
+  height: 15%;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deposit{
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: #27ae60;
+  padding: 1rem 1.5rem;
+  border-radius: 10rem;
+}
+
+.withdrawl{
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: #e74c3c;
+  padding: 1rem 1.5rem;
+  border-radius: 10rem;
+}
+
+/* //////////////////////////////////////////////// */
+/* Media Queries */
+@media screen and (max-width: 1400px) {
+  html{
+    font-size: 58%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html{
+    font-size: 50%;
+  }
+}
+
