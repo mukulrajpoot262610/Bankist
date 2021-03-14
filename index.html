@@ -77,28 +77,28 @@
     <div class="screen database" id="app">
 
         <div class="screen-right">
-            <div class="cards color1a">
+            <div class="cards color1">
                 <h1 class="heading-tertiary">Transfer Funds</h1>
                 <div class="input-fields-small color1a margin-top-small">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Transfer to">
+                    <input type="text" placeholder="Transfer to" id="form__input--to">
                 </div>  
                 <div class="input-fields-small color1a margin-top-small">
                     <i class="fas fa-money-bill-alt"></i>
-                    <input type="number" placeholder="Amount">
+                    <input type="number" placeholder="Amount" id='form__input--amount'>
                 </div>
-                <button class="btn height-small margin-top-small center">SEND</button>
+                <button class="btn height-small margin-top-small center" id="form__btn--transfer">PROCEED</button>
             </div>
 
-            <div class="cards margin-top-large color2a">
+            <div class="cards margin-top-large color2">
                 <h1 class="heading-tertiary">Request Loan</h1>
                 <div class="input-fields-small color2a margin-top-large">
                     <i class="fas fa-money-bill-alt"></i>
-                    <input type="number" placeholder="Amount">
+                    <input type="number" placeholder="Amount" id="form__input--loan-amount">
                 </div>
-                <button class="btn height-small margin-top-small center">SEND</button>
+                <button class="btn height-small margin-top-small center" id="form__btn--loan">SEND REQUEST</button>
             </div>
-            <div class="cards margin-top-large color3a">
+            <div class="cards margin-top-large color3">
                 <h1 class="heading-tertiary">See you soon 😊</h1>
                 <button class="btn height-small margin-top-large center" id="signout__btn">Sign Out</button>
             </div>
@@ -119,6 +119,10 @@
                         <h1 class="para-secondary">$100000</h1>
                     </div>
                     <div class="balance-cards">
+                        <h1 class="para-secondary pending">Pending</h1>
+                        <h1 class="para-secondary">$100000</h1>
+                    </div>
+                    <div class="balance-cards">
                         <h1 class="para-secondary withdrawl">Withdrawl</h1>
                         <h1 class="para-secondary">$100</h1>
                     </div>
@@ -126,19 +130,19 @@
             </div>
 
             <div class="screen-left-right">
-                <div class="utility-cards color2a padding-large">
+                <div class="utility-cards color2 padding-large">
                     <h1 class="heading-tertiary">Balance</h1>
                     <h1 class="heading-secondary right" id="balance__value"></h1>
                 </div>
-                <div class="utility-cards color1a margin-top-large">
+                <div class="utility-cards color1 margin-top-large">
                     <h1 class="heading-tertiary">IN</h1>
                     <h1 class="heading-secondary right" id="summary__value--in"></h1>
                 </div>
-                <div class="utility-cards color3a margin-top-large">
+                <div class="utility-cards color3 margin-top-large">
                     <h1 class="heading-tertiary">OUT</h1>
                     <h1 class="heading-secondary right" id="summary__value--out"></h1>
                 </div>
-                <div class="utility-cards color2a margin-top-large">
+                <div class="utility-cards color2 margin-top-large">
                     <h1 class="heading-tertiary">Interest</h1>
                     <h1 class="heading-secondary right" id="summary__value--interest"></h1>
                 </div>
