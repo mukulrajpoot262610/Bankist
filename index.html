@@ -35,36 +35,92 @@
                 <form action="" class="signin--form">
                     <div class="input--field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username">
+                        <input type="text" placeholder="Username" id="login__input--user">
                     </div>
                     <div class="input--field">
                         <i class="fas fa-key"></i>
-                        <input type="password" placeholder="Pin" maxlength="4">
+                        <input type="password" placeholder="Pin" maxlength="4" id="login__input--pin">
                     </div>
-                    <button class="btn">LOGIN</button>
+                    <button class="btn" id="login__btn">LOGIN</button>
                 </form>
             </div>
 
         </div>
     </div>
 
-    <div class="ui--container">
+    <div class="ui--container" id="app">
         <div class="ui--left">
             <div class="ui--greet">
-                <h1>Hello, Mukul 👋</h1>
+                <h1 class="label-welcome" id="welcome">Hello, Mukul 👋</h1>
+                <div class="amount-label">
+                    <h2 class="mt">Bankist Saving Account</h2>
+                    <h5>Available Funds</h5>
+                </div>
+                <h1 class="label-balance" id="balance__value">$90123</h1>
+                <h3 class="label-date" id="date">As of Date</h3>
             </div>
-            <div class="ui--movements">
+            <div class="ui--movements" id="movements">
+                <div class="movement--card">
+                    <div class="card--type">
+                        <h3 class="withdrawl">Withdrawl</h3>
+                        <h4>Date</h4>
+                    </div>
+                    <h1>$999</h1>
+                </div>
+                <div class="movement--card">
+                    <div class="card--type">
+                        <h3 class="deposit">Deposit</h3>
+                        <h4>Date</h4>
+                    </div>
+                    <h1>$999</h1>
+                </div>
             </div>
             <div class="ui--stats">
-                <div class="ui--data">$00</div>
-                <div class="ui--data ml">$00</div>
-                <div class="ui--data ml">$00</div>
+                <div class="ui--data">
+                    <h3>IN</h3>
+                    <h1 id="summary__value--in">$999</h1>
+                </div>
+                <div class="ui--data ml">
+                    <h3>OUT</h3>
+                    <h1 id="summary__value--out">$999</h1>
+                </div>
+                <div class="ui--data ml">
+                    <h3>INTEREST</h3>
+                    <h1 id="summary__value--interest">$999</h1>
+                </div>
             </div>
         </div>
         <div class="ui--right">
-            <div class="ui--function"></div>
-            <div class="ui--function"></div>
-            <div class="ui--function"></div>
+            <div class="ui--function">
+                <h3>TRANSFER FUNDS</h3>
+                <form action="" class="transfer--form">
+                    <div class="input--field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Transfer to" id="form__input--to">
+                    </div>
+                    <div class="input--field">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <input type="number" placeholder="Amount" id="form__input--amount">
+                    </div>
+                    <button class="btn" id="form__btn--transfer">SEND</button>
+                </form>
+            </div>
+            <div class="ui--function">
+                <h3>REQUEST LOAN</h3>
+                <form action="" class="loan--form">
+                    <div class="input--field">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <input type="number" placeholder="Amount" id="form__input--loan-amount">
+                    </div>
+                    <button class="btn" id="form__btn--loan">SEND REQUEST</button>
+                </form>
+            </div>
+            <div class="ui--function">
+                <h3>SEE YOU SOON 🙋‍♂️</h3>
+                <form action="" class="exit--form">
+                    <button class="btn" id="signout__btn">LOGOUT </button>
+                </form>
+            </div>
         </div>
     </div>
 
