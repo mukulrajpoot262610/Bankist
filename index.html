@@ -16,146 +16,59 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <ul class="navbar--navlinks">
-            <li><a href="#">
-                    <h1 class="heading-tertiary">BANKIST</h1>
-                </a></li>
-            <li><a href="#"><img src="./img/logo.png" alt="LOGO"></a></li>
 
-        </ul>
-    </nav>
 
-    <main class="screen login-page">
-        <div class="screen-left">
-            <img src="./img/undraw_Savings_re_eq4w.svg" alt="Hero">
+    <header class="header">
+        <h1 class="logo--heading">BANKIST</h1>
+        <img src="./img/logo.png" alt="Logo" class="logo--img" />
+    </header>
+
+    <div class="signin--container hidden">
+        <div class="container--left">
         </div>
-        <div class="screen-right">
-            <img src="./img/undraw_educator_oxfm (2).svg" alt="Human">
-            <h1 class="heading-secondary center margin-top-large">Grow With Us !</h1>
-            <div class="screen-right--input">
-                <div class="input-fields-big">
-                    <i class="fas fa-envelope mail"></i>
-                    <input type="text" placeholder="username" id="login__input--user">
-                </div>
-                <div class="input-fields-big margin-top-small">
-                    <i class="fas fa-lock password "></i>
-                    <input type="password" placeholder="pin" maxlength="4" id="login__input--pin">
-                </div>
-                <button class="btn margin-top-small" id="login__btn">LOGIN</button>
-                <h1 class="margin-top-large">Don't Have Account? <a href="#" id="toggle__signin">SIGN UP</a></h1>
+        <div class="container--right">
+            <div class="signin--info">
+                <img src="./img/undraw_educator_oxfm (2).svg" class="signin--img" />
+                <h1 class="signin--heading">GROW WITH US 🤝</h1>
             </div>
-        </div>
-    </main>
-
-    <main class="screen signup-page">
-        <div class="screen-left">
-            <img src="./img/undraw_sign_in_e6hj.svg" alt="Hero">
-        </div>
-        <div class="screen-right">
-            <img src="./img/undraw_male_avatar_323b.svg" alt="Human">
-            <h1 class="heading-secondary center margin-top-large">Grow With Us !</h1>
-            <div class="screen-right--input">
-                <div class="input-fields-big">
-                    <i class="fas fa-envelope mail"></i>
-                    <input type="text" placeholder="Username" id="signup__input--user">
-                </div>
-                <div class="input-fields-big margin-top-small">
-                    <i class="fas fa-phone-alt"></i>
-                    <input type="text" placeholder="Name" id="signup__input--owner">
-                </div>
-                <div class="input-fields-big margin-top-small">
-                    <i class="fas fa-lock password "></i>
-                    <input type="password" placeholder="Pin" maxlength="4" id="signup__input--pin">
-                </div>
-                <button class="btn margin-top-small" id="signup__btn">SIGN UP</button>
-                <h1 class="margin-top-large">Already Have a Account? <a href="#" id="toggle__signup">SIGN IN</a></h1>
-            </div>
-        </div>
-    </main>
-
-    <div class="screen database" id="app">
-
-        <div class="screen-right">
-            <div class="cards color1">
-                <h1 class="heading-tertiary">Transfer Funds</h1>
-                <div class="input-fields-small color1a margin-top-small">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Transfer to" id="form__input--to">
-                </div>  
-                <div class="input-fields-small color1a margin-top-small">
-                    <i class="fas fa-money-bill-alt"></i>
-                    <input type="number" placeholder="Amount" id='form__input--amount'>
-                </div>
-                <button class="btn height-small margin-top-small center" id="form__btn--transfer">PROCEED</button>
-            </div>
-
-            <div class="cards margin-top-large color2">
-                <h1 class="heading-tertiary">Request Loan</h1>
-                <div class="input-fields-small color2a margin-top-large">
-                    <i class="fas fa-money-bill-alt"></i>
-                    <input type="number" placeholder="Amount" id="form__input--loan-amount">
-                </div>
-                <button class="btn height-small margin-top-small center" id="form__btn--loan">SEND REQUEST</button>
-            </div>
-            <div class="cards margin-top-large color3">
-                <h1 class="heading-tertiary">See you soon 😊</h1>
-                <button class="btn height-small margin-top-large center" id="signout__btn">Sign Out</button>
-            </div>
-        </div>
-
-        <div class="screen-left main-ui">
-
-            <div class="screen-left-left padding-large">
-                <h1 class="heading-primary" id='welcome'> Hello Mukul</h1>
-                <h1 class="para-primary">Have a nice day at work 😊</h1>
-
-                <h1 class="para-primary margin-top-large">ALL TRANSACTIONS</h1>
-                <h1 class="para-secondary" id="date">As of date</h1>
-
-                <div class="transaction-cards margin-top-large" id="movements">
-                    <div class="balance-cards">
-                        <h1 class="para-secondary deposit">Deposit</h1>
-                        <h1 class="para-secondary">$100000</h1>
+            <div class="signin--form">
+                <form action="" class="signin--form">
+                    <div class="input--field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username">
                     </div>
-                    <div class="balance-cards">
-                        <h1 class="para-secondary pending">Pending</h1>
-                        <h1 class="para-secondary">$100000</h1>
+                    <div class="input--field">
+                        <i class="fas fa-key"></i>
+                        <input type="password" placeholder="Pin" maxlength="4">
                     </div>
-                    <div class="balance-cards">
-                        <h1 class="para-secondary withdrawl">Withdrawl</h1>
-                        <h1 class="para-secondary">$100</h1>
-                    </div>
-                </div>
-            </div>
-
-            <div class="screen-left-right">
-                <div class="utility-cards color2 padding-large">
-                    <h1 class="heading-tertiary">Balance</h1>
-                    <h1 class="heading-secondary right" id="balance__value"></h1>
-                </div>
-                <div class="utility-cards color1 margin-top-large">
-                    <h1 class="heading-tertiary">IN</h1>
-                    <h1 class="heading-secondary right" id="summary__value--in"></h1>
-                </div>
-                <div class="utility-cards color3 margin-top-large">
-                    <h1 class="heading-tertiary">OUT</h1>
-                    <h1 class="heading-secondary right" id="summary__value--out"></h1>
-                </div>
-                <div class="utility-cards color2 margin-top-large">
-                    <h1 class="heading-tertiary">Interest</h1>
-                    <h1 class="heading-secondary right" id="summary__value--interest"></h1>
-                </div>
+                    <button class="btn">LOGIN</button>
+                </form>
             </div>
 
         </div>
+    </div>
 
+    <div class="ui--container">
+        <div class="ui--left">
+            <div class="ui--greet">
+                <h1>Hello, Mukul 👋</h1>
+            </div>
+            <div class="ui--movements">
+            </div>
+            <div class="ui--stats">
+                <div class="ui--data">$00</div>
+                <div class="ui--data ml">$00</div>
+                <div class="ui--data ml">$00</div>
+            </div>
+        </div>
+        <div class="ui--right">
+            <div class="ui--function"></div>
+            <div class="ui--function"></div>
+            <div class="ui--function"></div>
+        </div>
     </div>
 
 
-
-
-    <script src="./js/app.js"></script>
     <script src="./js/script.js"></script>
 </body>
 
