@@ -1,8 +1,7 @@
-@import "./variable.css";
 @import "./utility.css";
 
 /* //////////////////////////////////////////////// */
-/* Global Styling */
+/* GLOBAL STYLING */
 
 * {
   margin: 0;
@@ -16,277 +15,239 @@ html {
   font-family: "Quicksand", sans-serif;
 }
 
-a{
-    color: var(--color-primary-dark);
-    text-decoration: none;
+a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
 }
 
-::placeholder{
-  font-family: "Quicksand", sans-serif; 
-}
-
-/* //////////////////////////////////////////////// */
-/* Typography */
-
-.heading-primary {
-  font-size: 10rem;
-  font-weight: 100;
-}
-
-.heading-secondary {
-  font-size: 6rem;
-  font-weight: 400;
-}
-
-.heading-tertiary {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: .6rem;
-}
-
-.para-primary{
-  font-size: 3rem;
-  font-weight: 400;
-}
-
-.para-secondary{
-  font-size: 2rem;
-  font-weight: 300;
-}
-
-/* //////////////////////////////////////////////// */
-/* Screens */
-
-.screen {
-  height: 90vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-primary-light);
-}
-
-.screen-left {
-  height: 100%;
-  width: 70%;
-  background: var(--color-primary-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.screen-right {
-  height: 100%;
-  width: 30%;
-  background: var(--color-secondary-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.screen-right--input {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 60%;
-  width: 100%;
+::placeholder {
+  font-family: "Quicksand", sans-serif;
 }
 
 input {
-  font-size: 2rem;
-  padding: 2rem;
-  border-radius: 5rem;
-  border: none;
+  width: 100%;
   background: none;
-  width: 70%;
-  margin-right: 1rem;
-}
-
-.screen-right--input i {
-  font-size: 2rem;
   border: none;
-}
-
-.screen-right img {
-  width: 10rem;
-}
-
-.input-fields-big{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10rem;
-  background: var(--color-primary-light);
-}
-
-.input-fields-small {
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10rem;
-  height: 5rem;
-}
-
-.signup-page{
-  display: none;
-}
-
-.screen-left-left {
-  height: 100%;
-  width: 60%;
-  background: var(--color-primary-light);
-  display: flex;
-  flex-direction: column;
-}
-
-.screen-left-right{
-  height: 100%;
-  width: 40%;
-  background: var(--color-primary-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#app{
-  display: none;
-}
-
-/* //////////////////////////////////////////////// */
-/* BUTTONS */
-
-.btn {
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: var(--color-primary-light);
-  background: var(--color-primary-dark);
-  border-radius: 20rem;
-  font-size: 2rem;
-  padding: 2rem 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: "Quicksand", sans-serif;
 }
 
 /* //////////////////////////////////////////////// */
-/* NAVBAR */
+/* GLOBAL COLORS */
 
-.navbar--navlinks {
+:root {
+  --color-primary-dark: #444;
+  --color-primary-light: #f3f3f3;
+  --color-secondary-light: #fff;
+}
+/* ========================== HEADER ========================= */
+.header {
+  height: 10vh;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5rem;
 }
 
-.navbar--navlinks li {
-  list-style: none;
+.logo--heading {
+  margin-left: 5rem;
+  font-weight: 900;
+  font-size: 3rem;
 }
 
-.navbar--navlinks li a img {
+.logo--img {
   width: 5rem;
+  margin-right: 5rem;
 }
 
-.navbar--navlinks--input {
+/* ========================== SIGNIN ======================= */
+.signin--container {
+  height: 90vh;
+  width: 100%;
+  background-color: var(--color-primary-light);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-/* //////////////////////////////////////////////// */
-/* CARDS */
+.container--left {
+  width: 60%;
+  height: 100%;
+  background-image: url("../img/undraw_Savings_re_eq4w.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
 
-.cards{
-  height: 26%;
-  width: 90%;
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
-  background: var(--color-primary-light);
+.container--right {
+  width: 40%;
+  height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+}
+
+.signin--info {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
 }
 
-.utility-cards{
-  color: var(--color-primary-dark);
-  height: 18%;
+.signin--img {
+  width: 20rem;
+}
+
+.signin--heading {
+  font-size: 5rem;
+  margin-top: 2rem;
+}
+
+.signin--form {
+  height: 50%;
   width: 90%;
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
   display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
-.transaction-cards{
-  background: var(--color-secondary-light);
-  height: 100%;
+.input--field {
+  display: flex;
+  min-width: 50%;
+  background-color: #f3f3f3;
+  padding: 2rem 3rem;
+  border-radius: 3rem;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.input--field input {
+  font-size: 2rem;
+  margin-left: 2rem;
+}
+
+.btn {
+  background: #333;
+  padding: 2rem 5rem;
+  border-radius: 4rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ====================== UI ======================== */
+
+.ui--container {
+  height: 90vh;
   width: 100%;
+  background: #f3f3f3;
+  display: flex;
+}
+
+.ui--left {
+  padding: 2rem 0;
+  width: 60%;
+  display: grid;
+  grid-template-rows: 2fr 7fr 1fr;
+  grid-gap: 2rem;
+}
+
+.ui--right {
+  padding: 2rem 0;
+  width: 40%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.ui--greet {
   border-radius: 1rem;
-  padding: 1rem 1rem;
+  margin: 0 auto;
+  width: 80%;
+  background: salmon;
+}
+
+.ui--movements {
+  border-radius: 1rem;
+  margin: 0 auto;
+  width: 80%;
+  background: saddlebrown;
   overflow-y: scroll;
 }
 
-.balance-cards{
-  background: var(--color-primary-light);
-  height: 15%;
-  width: 100%;
+.ui--stats {
   border-radius: 1rem;
-  padding: 1rem 1rem;
-  margin-bottom: 1rem;
+  margin: 0 auto;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.deposit{
-  text-transform: uppercase;
-  color: white;
-  font-size: 1.3rem;
-  font-weight: 900;
-  background: #27ae60;
-  padding: 1rem 1.5rem;
-  border-radius: 10rem;
+.ui--data {
+  background: chartreuse;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  padding: 2rem;
 }
 
-.withdrawl{
-  text-transform: uppercase;
-  color: white;
-  font-size: 1.3rem;
-  font-weight: 900;
-  background: #e74c3c;
-  padding: 1rem 1.5rem;
-  border-radius: 10rem;
+.ui--function {
+  background: coral;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: 0 auto;s
+  width: 80%;
 }
 
-.pending {
-  text-transform: uppercase;
-  color: white;
-  font-size: 1.3rem;
-  font-weight: 900;
-  background: #f1c40f;
-  padding: 1rem 1.5rem;
-  border-radius: 10rem;
-}
+@media screen and (max-width: 1300px) {
+  .container--left {
+    width: 40%;
+  }
 
-/* //////////////////////////////////////////////// */
-/* Media Queries */
-@media screen and (max-width: 1400px) {
-  html{
-    font-size: 58%;
+  .container--right {
+    width: 60%;
   }
 }
 
-@media screen and (max-width: 1000px) {
-  html{
+@media screen and (max-width: 900px) {
+  html {
     font-size: 50%;
   }
+  .container--left {
+    width: 0%;
+  }
+
+  .container--right {
+    width: 100%;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 40%;
+  }
+  .container--left {
+    width: 0%;
+  }
+
+  .container--right {
+    width: 100%;
+  }
+
+  .ui--container {
+    flex-direction: column;
+  }
+
+  .ui--left {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .ui--right {
+    width: 100%;
+    height: 60vh;
+  }
+}
