@@ -130,7 +130,7 @@ const displayOutput = (acc) => {
 ////////////////////////////////////////////////////////////////////////////
 // DISPLAYING INTEREST
 const displayInterest = (acc) => {
-  const totalInterest = Number.floor(
+  const totalInterest = Math.floor(
     acc.movements
       .filter((data) => data > 0)
       .map((data) => data * 0.06)
