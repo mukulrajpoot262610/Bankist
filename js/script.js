@@ -130,10 +130,12 @@ const displayOutput = (acc) => {
 ////////////////////////////////////////////////////////////////////////////
 // DISPLAYING INTEREST
 const displayInterest = (acc) => {
-  const totalInterest = Number.floor(acc.movements
-    .filter((data) => data > 0)
-    .map((data) => data * 0.06)
-    .reduce((a, b) => a + b));
+  const totalInterest = Number.floor(
+    acc.movements
+      .filter((data) => data > 0)
+      .map((data) => data * 0.06)
+      .reduce((a, b) => a + b)
+  );
   labelSumInterest.textContent = `₹${totalInterest}`;
 };
 
@@ -205,7 +207,7 @@ const displayTimer = () => {
 // IMPLEMENTING TRANSFERS
 btnTransfer.addEventListener("click", (e) => {
   e.preventDefault();
-  let user = inputTransferTo.value;
+  let user = inputTransferTo.value.trim();
   let amount = Number(inputTransferAmount.value);
   let transferTo = accounts.find((acc) => acc.username === user);
 
@@ -227,7 +229,7 @@ btnTransfer.addEventListener("click", (e) => {
 btnLoan.addEventListener("click", (e) => {
   e.preventDefault();
   let approved = false;
-  let amount = Number(inputLoanAmount.value);
+  let amount = Number(inputLoanAmount.value.trim());
   let displayDate = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
   let html = `
     <div class="movement--card">
@@ -277,8 +279,8 @@ btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
   accounts.find((acc) => {
     if (
-      acc.username === inputLoginUsername.value &&
-      acc.pin === Number(inputLoginPin.value)
+      acc.username === inputLoginUsername.value.trim() &&
+      acc.pin === Number(inputLoginPin.value.trim())
     ) {
       inputLoginUsername.value = inputLoginPin.value = "";
       inputLoginPin.blur();
