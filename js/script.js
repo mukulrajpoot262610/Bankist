@@ -1,8 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 // ALL THE ELEMENTS SELECTING
 
-let currentAccount = [];
-
 // LABELS
 const labelWelcome = document.getElementById("welcome");
 const labelDate = document.getElementById("date");
@@ -11,14 +9,15 @@ const labelSumIn = document.getElementById("summary__value--in");
 const labelSumOut = document.getElementById("summary__value--out");
 const labelSumInterest = document.getElementById("summary__value--interest");
 const labelTimer = document.querySelector(".timer");
+const labelInvaild = document.querySelector(".label-invalid");
 
 //CONTAINERS
 const containerApp = document.getElementById("app");
+const containerSignin = document.getElementById("signin");
 const containerMovements = document.getElementById("movements");
 
 //BUTTONS
 const btnLogin = document.getElementById("login__btn");
-const btnSignup = document.getElementById("signup__btn");
 const btnSignout = document.getElementById("signout__btn");
 const btnLoan = document.getElementById("form__btn--loan");
 const btnTransfer = document.getElementById("form__btn--transfer");
@@ -26,35 +25,9 @@ const btnTransfer = document.getElementById("form__btn--transfer");
 //INPUT FIELDS
 const inputLoginUsername = document.getElementById("login__input--user");
 const inputLoginPin = document.getElementById("login__input--pin");
-const inputSignupUsername = document.getElementById("signup__input--user");
-const inputSignupOwner = document.getElementById("signup__input--owner");
-const inputSignupPin = document.getElementById("signup__input--pin");
 const inputTransferTo = document.getElementById("form__input--to");
 const inputTransferAmount = document.getElementById("form__input--amount");
 const inputLoanAmount = document.getElementById("form__input--loan-amount");
-
-///////////////////////////////////////////////////////////////////////
-// IMPLEMENTING SIGN IN SIGN UP TOGGLE
-const loginPage = document.querySelector(".login-page");
-const signupPage = document.querySelector(".signup-page");
-const toggleSignin = document.getElementById("toggle__signin");
-const toggleSignup = document.getElementById("toggle__signup");
-
-toggleSignin.addEventListener("click", () => {
-  signupPage.style.display = "flex";
-  loginPage.style.display = "none";
-});
-
-toggleSignup.addEventListener("click", () => {
-  loginPage.style.display = "flex";
-  signupPage.style.display = "none";
-});
-
-btnSignout.addEventListener("click", () => {
-  containerApp.style.display = "none";
-  loginPage.style.display = "flex";
-  currentAccount = [];
-});
 
 ///////////////////////////////////////////////////////////////////////
 // ACCOUNTS
@@ -126,162 +99,196 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY NAME
-const displayName = (name) => {
-  labelWelcome.textContent = `Hello, ${name}`;
+let currentAccount = [];
+let timer;
+
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING BALANCE
+const displayBalance = (acc) => {
+  let totalBalance = acc.movements.reduce((a, b) => a + b);
+  labelBalance.textContent = `₹${totalBalance}`;
 };
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY BALANCE
-let currentAccountBalance = "";
-const displayBalance = (mov) => {
-  labelBalance.textContent = `₹ ${mov.reduce((acc, cur) => acc + cur)}`;
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING INPUT
+const displayInput = (acc) => {
+  let totalInput = acc.movements
+    .filter((val) => val > 0)
+    .reduce((a, b) => a + b);
+  labelSumIn.textContent = `₹${totalInput}`;
 };
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY INPUTS
-const displayInput = (mov) =>
-  (labelSumIn.textContent = `₹ ${mov
-    .filter((cur) => cur > 0)
-    .reduce((acc, cur) => acc + cur)}`);
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING OUTPUT
+const displayOutput = (acc) => {
+  let totalOutput = acc.movements
+    .filter((val) => val < 0)
+    .reduce((a, b) => a + b);
+  labelSumOut.textContent = `₹${Math.abs(totalOutput)}`;
+};
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY OUTPUTS
-const displayOutput = (mov) =>
-  (labelSumOut.textContent = `₹ ${mov
-    .filter((cur) => cur < 0)
-    .reduce((acc, cur) => Math.abs(acc) + Math.abs(cur))}`);
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING INTEREST
+const displayInterest = (acc) => {
+  const totalInterest = acc.movements
+    .filter((data) => data > 0)
+    .map((data) => data * 0.06)
+    .reduce((a, b) => a + b);
+  labelSumInterest.textContent = `₹${totalInterest}`;
+};
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY INTEREST
-const displayInterest = (mov) =>
-  (labelSumInterest.textContent = `₹ ${mov
-    .filter((cur) => cur > 0)
-    .map((val) => Math.trunc(val * (1 / 100)))
-    .reduce((acc, cur) => acc + cur)}`);
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING NAME AND DATE
+const displayName = (acc) => {
+  labelWelcome.textContent = `Hello, ${acc.owner.split(" ")[0]} 👋`;
+  labelDate.textContent = `As of ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
+};
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY DATE
-const date = new Date().toDateString();
-const displayDate = () => (labelDate.textContent = `As of ${date}`);
+// 🚩 If we want to loop two arrays in same method then we can use method for looping one and index for other.
 
-///////////////////////////////////////////////////////////////////////
-// DISPLAY MOVEMENTS DATE
-
-///////////////////////////////////////////////////////////////////////
-// DISPLAY MOVEMENTS
-const displayContainerMovements = (mov) => {
+////////////////////////////////////////////////////////////////////////////
+// DISPLAYING MOVEMENTS
+const displayMovements = (acc) => {
   containerMovements.innerHTML = "";
 
-  mov.forEach((element) => {
-    const check = element > 0 ? "deposit" : "withdrawl";
+  acc.movements.map((data, i) => {
+    let check = data > 0 ? "deposit" : "withdrawl";
+
+    let displayDate = acc.movementsDates[i];
+
+    if (!displayDate) {
+      displayDate = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
+    }
 
     const html = `
-    <div class="balance-cards">
-      <h1 class="para-secondary ${check}">${check}</h1>
-      <h1 class="para-secondary">₹ ${Math.abs(element)}</h1>
-    </div>
+    <div class="movement--card">
+      <div class="card--type">
+        <h3 class="${check}">${check.toUpperCase()}</h3>
+        <h5>${displayDate}</h5>
+      </div>
+        <h1>₹${Math.abs(data)}</h1>
+      </div>
     `;
-
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-///////////////////////////////////////////////////////////////////////
-// UPDATING UI
 
-const updateUi = (user) => {
-  displayName(user.owner.split(" ")[0]);
-  displayBalance(user.movements);
-  displayInput(user.movements);
-  displayOutput(user.movements);
-  displayInterest(user.movements);
-  displayDate();
-  displayContainerMovements(user.movements);
+////////////////////////////////////////////////////////////////////////////
+// IMPLEMENTING TIMERS
+const displayTimer = () => {
+  let time = 600;
+  const timer = setInterval(() => {
+    let min = String(Math.trunc(time / 60)).padStart(2, 0);
+    let sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `You will be logged out in ${min}:${sec}`;
+    time--;
+
+    if (time === 0) {
+      clearInterval(timer);
+      containerApp.classList.add("hidden");
+      containerSignin.classList.remove("hidden");
+    }
+    ////////////////////////////////////////////////////////////////////////////
+    // IMPLEMENTING LOGOUT
+    btnSignout.addEventListener("click", (e) => {
+      e.preventDefault();
+      clearInterval(timer);
+      containerApp.classList.add("hidden");
+      containerSignin.classList.remove("hidden");
+      labelInvaild.textContent = "";
+      labelInvaild.classList.remove("invalid");
+    });
+  }, 1000);
 };
 
-///////////////////////////////////////////////////////////////////////
-// SAVING OWNER
+////////////////////////////////////////////////////////////////////////////
+// IMPLEMENTING TRANSFERS
+btnTransfer.addEventListener("click", (e) => {
+  e.preventDefault();
+  let user = inputTransferTo.value;
+  let amount = Number(inputTransferAmount.value);
+  let transferTo = accounts.find((acc) => acc.username === user);
 
-///////////////////////////////////////////////////////////////////////
-// LOGIN SYSTEM
-
-btnLogin.addEventListener("click", () => {
-  accounts.find((user) => {
-    if (
-      user.username === inputLoginUsername.value &&
-      user.pin === Number(inputLoginPin.value)
-    ) {
-      loginPage.style.display = "none";
-      containerApp.style.display = "flex";
-      currentAccount.push(user);
-      updateUi(user);
-      console.log(currentAccount[0].username);
-    }
-  });
+  if (
+    transferTo &&
+    amount > 0 &&
+    amount < currentAccount.movements.reduce((a, b) => a + b)
+  ) {
+    currentAccount.movements.push(-amount);
+    transferTo.movements.push(amount);
+    updateUI();
+    inputTransferTo.value = inputTransferAmount.value = "";
+    inputTransferAmount.blur();
+  }
 });
 
-///////////////////////////////////////////////////////////////////////
-// MONEY TRANSFER SYSTEM
-
-btnTransfer.addEventListener("click", () => {
-  let balance = currentAccount[0].movements.reduce((acc, cur) => acc + cur);
-  accounts.find((user) => {
-    if (
-      user.username === inputTransferTo.value &&
-      inputTransferTo.value !== currentAccount[0].username &&
-      balance > Number(inputTransferAmount.value)
-    ) {
-      const amount = Number(inputTransferAmount.value);
-      user.movements.push(amount);
-      currentAccount[0].movements.push(-amount);
-      updateUi(currentAccount[0]);
-      inputTransferAmount.value = inputTransferTo.value = "";
-    }
-  });
-});
-
-///////////////////////////////////////////////////////////////////////
-// LOAN SYSTEM
-
-btnLoan.addEventListener("click", () => {
-  let balance = currentAccount[0].movements.reduce((acc, cur) => acc + cur);
-  const amount = Number(inputLoanAmount.value);
-  const applicable = amount * (20 / 100) < balance ? true : false;
-
-  let check = "pending";
+////////////////////////////////////////////////////////////////////////////
+// IMPLEMENTING LOAN SYSTEM
+btnLoan.addEventListener("click", (e) => {
+  e.preventDefault();
+  let approved = false;
+  let amount = Number(inputLoanAmount.value);
+  let displayDate = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
   let html = `
-    <div class="balance-cards">
-      <h1 class="para-secondary ${check}">${check}</h1>
-      <h1 class="para-secondary">₹ ${amount}</h1>
-    </div>`;
+    <div class="movement--card">
+      <div class="card--type">
+        <h3 class="pending">PENDING</h3>
+        <h5>${displayDate}</h5>
+      </div>
+        <h1>₹${amount}</h1>
+      </div>
+    `;
   containerMovements.insertAdjacentHTML("afterbegin", html);
-
   setTimeout(() => {
-    if (applicable === true) {
-      currentAccount[0].movements.push(amount);
-      updateUi(currentAccount[0]);
-      inputLoanAmount.value = "";
+    if (
+      Number(currentAccount.movements.reduce((a, b) => a + b)) / 0.2 >=
+      amount
+    ) {
+      currentAccount.movements.push(amount);
+      updateUI();
+      approved = true;
     }
-  }, 10000);
+
+    if (!approved) {
+      console.log("helo");
+      containerMovements.firstElementChild.remove();
+    }
+    inputLoanAmount.value = "";
+    inputLoanAmount.blur();
+  }, 5000);
 });
 
-///////////////////////////////////////////////////////////////////////
-// SIGNUP SYSTEM
-// btnSignup.addEventListener("click", () => {
-//   loginPage.style.display = "flex";
-//   signupPage.style.display = "none";
+////////////////////////////////////////////////////////////////////////////
+// UPDATE UI
+const updateUI = () => {
+  displayBalance(currentAccount);
+  displayInput(currentAccount);
+  displayOutput(currentAccount);
+  displayName(currentAccount);
+  displayTimer();
+  displayMovements(currentAccount);
+  displayInterest(currentAccount);
+  labelInvaild.textContent = "";
+};
 
-//   let count = 5;
-
-//   const addOwner = () => inputSignupUsername.value;
-
-//   let account = {};
-//   account[count] = {
-//     username: inputSignupUsername.value,
-//     owner: inputSignupOwner.value,
-//     pin: inputSignupPin.value,
-//   };
-
-//   console.log(account[count]);
-// });
+////////////////////////////////////////////////////////////////////////////
+// IMPLEMENTING SIGNIN
+btnLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+  accounts.find((acc) => {
+    if (
+      acc.username === inputLoginUsername.value &&
+      acc.pin === Number(inputLoginPin.value)
+    ) {
+      inputLoginUsername.value = inputLoginPin.value = "";
+      inputLoginPin.blur();
+      currentAccount = acc;
+      containerApp.classList.remove("hidden");
+      containerSignin.classList.add("hidden");
+      updateUI();
+    } else {
+      labelInvaild.textContent = "INVALID";
+      labelInvaild.classList.add("invalid");
+    }
+  });
+});
