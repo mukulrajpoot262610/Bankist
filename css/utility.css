@@ -9,3 +9,23 @@
 .mt {
   margin-top: 2rem;
 }
+
+.mb {
+  margin-bottom: 2rem;
+}
+
+.c-red {
+  background-color: var(--color-red) !important;
+}
+
+.c-green {
+  background-color: var(--color-green) !important;
+}
+
+.c-yellow {
+  background-color: var(--color-yellow) !important;
+}
+
+.right {
+  text-align: right !important;
+}

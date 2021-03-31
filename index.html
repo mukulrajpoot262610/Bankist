@@ -3,7 +3,7 @@
 
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="./css/style.css">
@@ -23,7 +23,7 @@
         <img src="./img/logo.png" alt="Logo" class="logo--img" />
     </header>
 
-    <div class="signin--container hidden">
+    <div class="signin--container" id="signin">
         <div class="container--left">
         </div>
         <div class="container--right">
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div class="ui--container" id="app">
+    <div class="ui--container hidden" id="app">
         <div class="ui--left">
             <div class="ui--greet">
                 <h1 class="label-welcome" id="welcome">Hello, Mukul 👋</h1>
@@ -60,40 +60,27 @@
                 <h3 class="label-date" id="date">As of Date</h3>
             </div>
             <div class="ui--movements" id="movements">
-                <div class="movement--card">
-                    <div class="card--type">
-                        <h3 class="withdrawl">Withdrawl</h3>
-                        <h4>Date</h4>
-                    </div>
-                    <h1>$999</h1>
-                </div>
-                <div class="movement--card">
-                    <div class="card--type">
-                        <h3 class="deposit">Deposit</h3>
-                        <h4>Date</h4>
-                    </div>
-                    <h1>$999</h1>
-                </div>
+
             </div>
             <div class="ui--stats">
-                <div class="ui--data">
+                <div class="ui--data c-green">
                     <h3>IN</h3>
-                    <h1 id="summary__value--in">$999</h1>
+                    <h1 id="summary__value--in" class="right">$999</h1>
                 </div>
-                <div class="ui--data ml">
+                <div class="ui--data ml c-red">
                     <h3>OUT</h3>
-                    <h1 id="summary__value--out">$999</h1>
+                    <h1 id="summary__value--out" class="right">$999</h1>
                 </div>
-                <div class="ui--data ml">
+                <div class="ui--data ml c-yellow">
                     <h3>INTEREST</h3>
-                    <h1 id="summary__value--interest">$999</h1>
+                    <h1 id="summary__value--interest" class="right">$999</h1>
                 </div>
             </div>
         </div>
         <div class="ui--right">
-            <div class="ui--function">
+            <div class="ui--function c-green">
                 <h3>TRANSFER FUNDS</h3>
-                <form action="" class="transfer--form">
+                <form action="" class="transfer--form mt">
                     <div class="input--field">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Transfer to" id="form__input--to">
@@ -105,9 +92,9 @@
                     <button class="btn" id="form__btn--transfer">SEND</button>
                 </form>
             </div>
-            <div class="ui--function">
+            <div class="ui--function c-yellow">
                 <h3>REQUEST LOAN</h3>
-                <form action="" class="loan--form">
+                <form action="" class="loan--form mt">
                     <div class="input--field">
                         <i class="fas fa-money-bill-alt"></i>
                         <input type="number" placeholder="Amount" id="form__input--loan-amount">
@@ -115,15 +102,14 @@
                     <button class="btn" id="form__btn--loan">SEND REQUEST</button>
                 </form>
             </div>
-            <div class="ui--function">
+            <div class="ui--function c-red mb">
                 <h3>SEE YOU SOON 🙋‍♂️</h3>
                 <form action="" class="exit--form">
-                    <button class="btn" id="signout__btn">LOGOUT </button>
+                    <button class="btn mt" id="signout__btn">LOGOUT </button>
                 </form>
             </div>
         </div>
     </div>
-
 
     <script src="./js/script.js"></script>
 </body>
