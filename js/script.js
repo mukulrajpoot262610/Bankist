@@ -130,10 +130,10 @@ const displayOutput = (acc) => {
 ////////////////////////////////////////////////////////////////////////////
 // DISPLAYING INTEREST
 const displayInterest = (acc) => {
-  const totalInterest = acc.movements
+  const totalInterest = Number.floor(acc.movements
     .filter((data) => data > 0)
     .map((data) => data * 0.06)
-    .reduce((a, b) => a + b);
+    .reduce((a, b) => a + b));
   labelSumInterest.textContent = `₹${totalInterest}`;
 };
 
