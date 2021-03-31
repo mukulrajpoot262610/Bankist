@@ -207,7 +207,7 @@ const displayTimer = () => {
 // IMPLEMENTING TRANSFERS
 btnTransfer.addEventListener("click", (e) => {
   e.preventDefault();
-  let user = inputTransferTo.value.trim();
+  let user = inputTransferTo.value.trim().toLowerCase();
   let amount = Number(inputTransferAmount.value);
   let transferTo = accounts.find((acc) => acc.username === user);
 
@@ -279,7 +279,7 @@ btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
   accounts.find((acc) => {
     if (
-      acc.username === inputLoginUsername.value.trim() &&
+      acc.username === inputLoginUsername.value.trim().toLowerCase() &&
       acc.pin === Number(inputLoginPin.value.trim())
     ) {
       inputLoginUsername.value = inputLoginPin.value = "";
